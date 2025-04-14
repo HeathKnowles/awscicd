@@ -115,7 +115,7 @@ resource "aws_security_group" "web_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [trimspace(data.http.my_ip.response_body) + "/32"]
+    cidr_blocks = [format("%s/32", trimspace(data.http.my_ip.response_body))]
   }
 
   egress {
