@@ -58,8 +58,8 @@ resource "aws_lambda_function" "s3_logger" {
   runtime       = "python3.9"
   timeout       = 10
 
-  filename         = "${path.module}/lambda/function.zip"
-  source_code_hash = filebase64sha256("${path.module}/lambda/function.zip")
+  filename         = "${path.module}/logger.zip"
+  source_code_hash = filebase64sha256("${path.module}/logger.zip")
 }
 
 resource "aws_lambda_permission" "allow_s3" {
