@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "static_site" {
   bucket = var.bucket_name
 
   tags = {
-    Name = "StaticWebsiteBucket"
+    Name = "StaticWebsiteBucket-12345679"
   }
 }
 
@@ -58,8 +58,8 @@ resource "aws_lambda_function" "s3_logger" {
   runtime       = "python3.9"
   timeout       = 10
 
-  filename         = "${path.module}/logger.zip"
-  source_code_hash = filebase64sha256("${path.module}/logger.zip")
+  filename         = "${path.module}/lambda/function.zip"
+  source_code_hash = filebase64sha256("${path.module}/lambda/function.zip")
 }
 
 resource "aws_lambda_permission" "allow_s3" {
@@ -129,4 +129,3 @@ resource "aws_security_group" "web_sg" {
 data "http" "my_ip" {
   url = "https://checkip.amazonaws.com"
 }
-
