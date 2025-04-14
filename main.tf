@@ -91,7 +91,7 @@ resource "aws_instance" "web" {
     Name = "WebServer"
   }
 
-  vpc_security_group_ids = [aws_security_group.web_sg.id]
+  vpc_security_group_ids = [aws_security_group.web_craze_sg.id]
 }
 
 data "aws_ami" "amazon_linux" {
@@ -107,8 +107,8 @@ data "aws_ami" "amazon_linux" {
 # -------------------------
 # Security Group
 # -------------------------
-resource "aws_security_group" "web_sg" {
-  name        = "web_sg"
+resource "aws_security_group" "web_craze_sg" {
+  name        = "web_craze_sg"
   description = "Allow HTTP from my IP"
 
   ingress {
